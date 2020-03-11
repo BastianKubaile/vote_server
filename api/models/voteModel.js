@@ -22,7 +22,12 @@ var PollSchema = new Schema({
     end_date: Date,
     answers: [AnswerSchema],
     submitions: [SubmitionSchema]
+});
 
-})
-
-module.exports = mongoose.model("polls", PollSchema);
+//This file might be required more than once
+try{
+    module.exports.polls = mongoose.model("polls", PollSchema);
+}catch(e){
+    module.exports.polls = mongoose.model("polls");
+}
+module.exports.pollSchema = PollSchema;

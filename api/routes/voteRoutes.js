@@ -4,7 +4,9 @@ const controller = require("../controllers/voteController");
 module.exports = function(app){
     var vote = require("../controllers/voteController");
 
-    app.use(controller.wait_for_intialized);
+    app.use(controller.check_initialization);
+    app.use(controller.log_request);
+    app.use(controller.handle_error);
     //Vote Routes
     app.route("/poll")
         .post(vote.add_poll);

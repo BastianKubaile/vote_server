@@ -3,7 +3,7 @@ var express = require("express"),
     app = express(),
     port = process.env.PORT || 4000,
     mongoose = require("mongoose"),
-    polls = require("./api/models/voteModel"),
+    polls = require("./api/models/voteModel").polls,
     bodyParser = require("body-parser");
     
     
@@ -12,7 +12,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/Votedb", {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
+}).then(
+
+);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
